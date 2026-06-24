@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Взять кредит</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .credit-widget {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 32px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .widget-title {
+            color: #1a1a1a;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            color: #666666;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #1a1a1a;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        /* Убираем стрелочки у поля type="number" */
+        .form-group input::-webkit-outer-spin-button,
+        .form-group input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .form-group input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .form-group input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Стили для суффикса валюты */
+        .currency-suffix {
+            position: absolute;
+            right: 16px;
+            color: #888888;
+            font-weight: 600;
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .input-with-suffix {
+            padding-right: 60px !important;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #4f46e5;
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            background: #4338ca;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Чтобы перенаправление работало автоматически, используется тег <form> и атрибут action -->
+    <!-- Замените "https://example.com" на адрес нужной вам страницы -->
+    <form class="credit-widget" action="credit.html" method="GET">
+        <h2 class="widget-title">Получить кредит</h2>
+        
+        <!-- Поле 1: Номер карты -->
+        <div class="form-group">
+            <label for="card-number">Номер карты</label>
+            <input 
+                type="number" 
+                id="card-number" 
+                name="card_number" 
+                placeholder="Вводить только цифры" 
+                required
+            >
+        </div>
+        
+        <!-- Поле 2: Сумма кредита -->
+        <div class="form-group">
+            <label for="credit-amount">Сумма кредита FLP FLP = 10 RUB</label>
+            <div class="input-wrapper">
+                <input 
+                    type="number" 
+                    id="credit-amount" 
+                    name="amount" 
+                    class="input-with-suffix" 
+                    placeholder="0" 
+                    min="1" 
+                    required
+                >
+                <span class="currency-suffix">FLP</span>
+            </div>
+        </div>
+        
+        <!-- Кнопка отправки формы и перехода -->
+        <button type="submit" class="submit-btn">Взять кредит</button>
+    </form>
+
+</body>
+</html>
