@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloppaBank Widget</title>
+    <title>FloppaBank 0</title>
     <style>
         * {
             margin: 0;
@@ -20,11 +20,11 @@
             background: #0f0c1b;
         }
 
-        /* Контейнер карты */
+        /* Контейнер карты (высота увеличена для баланса) */
         .card-widget {
             position: relative;
             width: 380px;
-            height: 240px;
+            height: 250px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             border-radius: 20px;
             padding: 25px;
@@ -74,21 +74,31 @@
             font-size: 1.5rem;
         }
 
-        /* Чип карты */
-        .card-chip {
-            width: 45px;
-            height: 35px;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            border-radius: 6px;
-            margin-top: 10px;
-            position: relative;
+        /* Блок баланса */
+        .balance-container {
+            margin-top: 15px;
+        }
+
+        .balance-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: #a4b0be;
+            letter-spacing: 1px;
+        }
+
+        .balance-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00f2fe;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+            animation: pulse 3s infinite alternate;
         }
 
         /* Номер карты */
         .card-number {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             letter-spacing: 3px;
-            margin-top: 20px;
+            margin-top: 10px;
             font-weight: 500;
             color: #f1f2f6;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -99,6 +109,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            margin-top: 10px;
         }
 
         .info-label {
@@ -123,8 +134,14 @@
             font-size: 0.8rem;
             font-weight: bold;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #00f2fe;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            color: #ff9a9e;
+            box-shadow: 0 0 10px rgba(255, 154, 158, 0.2);
+        }
+
+        /* Анимация пульсации для баланса */
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
+            100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); }
         }
     </style>
 </head>
@@ -134,11 +151,14 @@
         <!-- Шапка: Название и Логотип -->
         <div class="card-header">
             <span class="bank-name">FloppaBank</span>
-            <span class="card-logo"> Caracal Pay</span>
+            <span class="card-logo"> FLP</span>
         </div>
 
-        <!-- Смарт-чип -->
-        <div class="card-chip"></div>
+        <!-- Баланс карты -->
+        <div class="balance-container">
+            <div class="balance-label">Balance</div>
+            <div class="balance-value">10 FLP</div>
+        </div>
 
         <!-- Номер карты -->
         <div class="card-number">4412 •••• •••• 2026</div>
@@ -154,7 +174,7 @@
                 <div class="info-value">12/32</div>
             </div>
             <div>
-                <div class="currency-badge">FLP ONLY</div>
+                <div class="currency-badge">PREMIUM</div>
             </div>
         </div>
     </div>
