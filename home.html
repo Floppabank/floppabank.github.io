@@ -3,46 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
-    <a href="credit.html" style="display: inline-block; background-color: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 4px; font-family: sans-serif; font-weight: bold; text-align: center;">
-  Взять кредит
-</a>
+    <title>FloppaBank — Управление FLP Картами</title>
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            --new-card-bg: linear-gradient(135deg, #10b981, #047857);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #e9ecef;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            color: #3b82f6;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .controls h2 {
+            font-size: 1.5rem;
             margin: 0;
         }
-        .welcome-container {
-            background: white;
-            padding: 40px;
+
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
         }
-        h1 {
-            color: #28a745;
+
+        button:hover {
+            background-color: #2563eb;
         }
-        p {
-            color: #6c757d;
-            font-size: 18px;
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .bank-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .bank-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bank-card.custom {
+            background: var(--new-card-bg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .bank-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .card-type {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .card-balance {
+            margin-top: 20px;
+        }
+
+        .balance-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .balance-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+
+        .card-number {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .holder-name {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            padding: 0;
+            line-height: 1;
+            transition: background 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: rgba(239, 68, 68, 0.8);
         }
     </style>
 </head>
 <body>
-    <div class="welcome-container">
-        <h1>Добро пожаловать!</h1>
-        <p>Вы успешно вошли в систему.</p>
-        <p><a href="login.html">Выйти</a></p>
-        <h1 style="text-align: center;">Floppabank</h1>
-<iframe src="https://floppabank.github.io/denis1946/0.html" width="600" height="400" frameborder="0" allowfullscreen></iframe>
-<a href="trans.html" style="display: inline-block; background-color: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 4px; font-family: sans-serif; font-weight: bold; text-align: center;">
-  Перевод FLP
-</a>
+
+    <div class="container">
+        <header>
+            <h1>FloppaBank</h1>
+            <p>Ваш надежный партнер в мире шлёп-валюты</p>
+        </header>
+
+        <div class="controls">
+            <h2>Мои карты</h2>
+            <button id="addCardBtn">Добавить карту</button>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Сюда JavaScript будет добавлять карты -->
+        </div>
     </div>
+
+    <script>
+        const cardsGrid = document.getElementById('cardsGrid');
+        const addCardBtn = document.getElementById('addCardBtn');
+
+        // Основная карта по умолчанию
+        const defaultCard = {
+            id: 'main-card',
+            isDefault: true,
+            balance: 5000,
+            number: '4411 •••• •••• 7777',
+            holder: 'BIG FLOPPA'
+        };
+
+        // Загрузка пользовательских карт из локальной памяти
+        let customCards = JSON.parse(localStorage.getItem('floppa_custom_cards')) || [];
+
+        function generateRandomCardNumber() {
+            const random4Digits = Math.floor(1000 + Math.random() * 9000);
+            return `4411 •••• •••• ${random4Digits}`;
+        }
+
+        function renderCards() {
+            cardsGrid.innerHTML = '';
+            
+            // Сначала создаем дефолтную карту
+            createCardElement(defaultCard);
+
+            // Потом создаем все добавленные пользователем карты
+            customCards.forEach(card => {
+                createCardElement(card);
+            });
+        }
+
+        function createCardElement(card) {
+            const cardDiv = document.createElement('div');
+            cardDiv.className = `bank-card ${card.isDefault ? '' : 'custom'}`;
+
+            cardDiv.innerHTML = `
+                <div class="card-header">
+                    <span class="bank-name">FloppaBank</span>
+                    <span class="card-type">${card.isDefault ? 'Основная' : 'Дополнительная'}</span>
+                </div>
+                <div class="card-balance">
+                    <div class="balance-label">Баланс</div>
+                    <div class="balance-amount">${card.balance.toLocaleString()} FLP</div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-number">${card.number}</span>
+                    <span class="holder-name">${card.holder}</span>
+                </div>
+            `;
+
+            if (!card.isDefault) {
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerHTML = '✕';
+                deleteBtn.title = 'Удалить карту';
+                deleteBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    deleteCard(card.id);
+                };
+                cardDiv.appendChild(deleteBtn);
+            }
+
+            cardsGrid.appendChild(cardDiv);
+        }
+
+        function addNewCard() {
+            const newCard = {
+                id: 'card_' + Date.now(),
+                isDefault: false,
+                balance: 0,
+                number: generateRandomCardNumber(),
+                holder: 'FLOPPA USER'
+            };
+
+            customCards.push(newCard);
+            saveToStorage();
+            renderCards();
+        }
+
+        function deleteCard(id) {
+            customCards = customCards.filter(card => card.id !== id);
+            saveToStorage();
+            renderCards();
+        }
+
+        function saveToStorage() {
+            localStorage.setItem('floppa_custom_cards', JSON.stringify(customCards));
+        }
+
+        addCardBtn.addEventListener('click', addNewCard);
+
+        renderCards();
+    </script>
 </body>
 </html>
